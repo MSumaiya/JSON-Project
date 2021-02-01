@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+}
+
+.posts{
+  text-align: left;
+  margin-left: 40px;
+}
+
+.post{
+  border-bottom: 3px solid #000000;
+}
+
+.observation{
+  border-bottom: 1px solid #000000;
+}
+.animal{
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+
+}
+
+td,th {
+  border: 2px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}

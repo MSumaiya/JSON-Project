@@ -1,0 +1,440 @@
+{
+    "Id": 1, 
+    "ObservationGroups": [
+        {
+            "ObservationGroupId": 20,
+            "ObservationGroupName": "Breath",
+            "Observations": [
+                {
+                    "Id": 94,
+                    "Name": "REIR",
+                    "Description": "(Respiration irregular) Respiration irregular i.e. depth and/or frequency is variable",
+                    "Scoring": "0.1"
+                },
+                {
+                    "Id": 95,
+                    "Name": "RENO",
+                    "Description": "(Respiration noisy) Respiration noisy e.g. wheezing",
+                    "Scoring": "0.1"
+                },
+                {
+                    "Id": 96,
+                    "Name": "REDY",
+                    "Description": "(Respiration dyspnea) Breathing difficulties, shortness of breath, forced breathing e.g. labored breathing and gasping",
+                    "Scoring": "0.4"
+                }
+            ]
+        },
+        {
+            "ObservationGroupId": 16,
+            "ObservationGroupName": "Flesh and Weight",
+            "Observations": [
+                {
+                    "Id": 78,
+                    "Name": "OBES",
+                    "Description": "(Animal appears excessively fat but not necessarily associated with weight gain",
+                    "Scoring": "0.1"
+                },
+                {
+                    "Id": 76,
+                    "Name": "SWOL",
+                    "Description": "(Swollen) For description of an area which appears swollen (usually soft in consistency).  Do not use when abdomen is distended. DIAB (Distended abdomen)",
+                    "Scoring": "0.1"
+                },
+                {
+                    "Id": 80,
+                    "Name": "THIN E",
+                    "Description": "(Animal appears thin i.e spine feels prominent not necessarily associated with weight loss > 15%",
+                    "Scoring": "0.4"
+                }
+            ]
+        },
+        {
+            "ObservationGroupId": 15,
+            "ObservationGroupName": "Skin",
+            "Observations": [
+                {
+                    "Id": 75,
+                    "Name": "EXSC",
+                    "Description": "(Excessive scratching)",
+                    "Scoring": "0.4"
+                },
+                {
+                    "Id": 71,
+                    "Name": "HAIR",
+                    "Description": "(Hair loss) General or patchy",
+                    "Scoring": "0.1"
+                },
+                {
+                    "Id": 73,
+                    "Name": "SCRA",
+                    "Description": "(Scratching)",
+                    "Scoring": "0.1"
+                }
+            ]
+        }
+    ],
+    "Animals": [
+        {
+            "Id": 340,
+            "Identification": "N",
+            "StudyGroupId": 3,
+            "StudyGroupName": "Medium Dose",
+            "Activities": [
+                {
+                    "Id": 6,
+                    "StudyActivityId": 0,
+                    "ActivityType": 4,
+                    "ActivityName": "Shaving",
+                    "SortOrder": 1,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "Done",
+                    "LatestScoring": ""
+                },
+                {
+                    "Id": 2,
+                    "StudyActivityId": 0,
+                    "ActivityType": 9,
+                    "ActivityName": "Weight",
+                    "SortOrder": 2,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "23",
+                    "LatestScoring": ""
+                },
+                {
+                    "Id": 39,
+                    "StudyActivityId": 0,
+                    "ActivityType": 5,
+                    "ActivityName": "Clinical Observation",
+                    "SortOrder": 3,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "",
+                    "LatestScoring": "0.1"
+                },
+                {
+                    "Id": 4,
+                    "StudyActivityId": 5,
+                    "ActivityType": 6,
+                    "ActivityName": "Injection",
+                    "SortOrder": 4,
+                    "NumericValues": "mL,kg",
+                    "Formula": "",
+                    "Dose": "10",
+                    "FormulationConcentration": "2.0 mg/mL",
+                    "Concentration": "20 mg/kg",
+                    "Substance": "Compound 1",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "1,150",
+                    "LatestScoring": ""
+                },
+                {
+                    "Id": 5,
+                    "StudyActivityId": 0,
+                    "ActivityType": 5,
+                    "ActivityName": "Injection Observation",
+                    "SortOrder": 5,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "",
+                    "LatestScoring": "0.1"
+                },
+                {
+                    "Id": 8,
+                    "StudyActivityId": 10,
+                    "ActivityType": 3,
+                    "ActivityName": "Measure Tumour",
+                    "SortOrder": 6,
+                    "NumericValues": "Width,Height,Length",
+                    "Formula": "4/3*([Width]/2)*([Height]/2)*([Length]/2)*[Pi]",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "65",
+                    "LatestScoring": ""
+                },
+                {
+                    "Id": 46,
+                    "StudyActivityId": 0,
+                    "ActivityType": 8,
+                    "ActivityName": "Sacrifice",
+                    "SortOrder": 7,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "",
+                    "LatestResult": "",
+                    "LatestScoring": ""
+                }
+            ]
+        },
+        {
+            "Id": 341,
+            "Identification": "R",
+            "StudyGroupId": 3,
+            "StudyGroupName": "Medium Dose",
+            "Activities": [
+                {
+                    "Id": 6,
+                    "StudyActivityId": 0,
+                    "ActivityType": 4,
+                    "ActivityName": "Shaving",
+                    "SortOrder": 1,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "Done",
+                    "LatestScoring": ""
+                },
+                {
+                    "Id": 2,
+                    "StudyActivityId": 0,
+                    "ActivityType": 9,
+                    "ActivityName": "Weight",
+                    "SortOrder": 2,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "23",
+                    "LatestScoring": ""
+                },
+                {
+                    "Id": 39,
+                    "StudyActivityId": 0,
+                    "ActivityType": 5,
+                    "ActivityName": "Clinical Observation",
+                    "SortOrder": 3,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "",
+                    "LatestScoring": "0.1"
+                },
+                {
+                    "Id": 4,
+                    "StudyActivityId": 5,
+                    "ActivityType": 6,
+                    "ActivityName": "Injection",
+                    "SortOrder": 4,
+                    "NumericValues": "mL,kg",
+                    "Formula": "",
+                    "Dose": "10",
+                    "FormulationConcentration": "2.0 mg/mL",
+                    "Concentration": "20 mg/kg",
+                    "Substance": "Compound 1",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "1,150",
+                    "LatestScoring": ""
+                },
+                {
+                    "Id": 5,
+                    "StudyActivityId": 0,
+                    "ActivityType": 5,
+                    "ActivityName": "Injection Observation",
+                    "SortOrder": 5,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "",
+                    "LatestScoring": "0.1"
+                },
+                {
+                    "Id": 8,
+                    "StudyActivityId": 10,
+                    "ActivityType": 3,
+                    "ActivityName": "Measure Tumour",
+                    "SortOrder": 6,
+                    "NumericValues": "Width,Height,Length",
+                    "Formula": "4/3*([Width]/2)*([Height]/2)*([Length]/2)*[Pi]",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "65",
+                    "LatestScoring": ""
+                },
+                {
+                    "Id": 46,
+                    "StudyActivityId": 0,
+                    "ActivityType": 8,
+                    "ActivityName": "Sacrifice",
+                    "SortOrder": 7,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "",
+                    "LatestResult": "",
+                    "LatestScoring": ""
+                }
+            ]
+        },
+        {
+            "Id": 342,
+            "Identification": "L",
+            "StudyGroupId": 3,
+            "StudyGroupName": "Medium Dose",
+            "Activities": [
+                {
+                    "Id": 6,
+                    "StudyActivityId": 0,
+                    "ActivityType": 4,
+                    "ActivityName": "Shaving",
+                    "SortOrder": 1,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "Done",
+                    "LatestScoring": ""
+                },
+                {
+                    "Id": 2,
+                    "StudyActivityId": 0,
+                    "ActivityType": 9,
+                    "ActivityName": "Weight",
+                    "SortOrder": 2,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "23",
+                    "LatestScoring": ""
+                },
+                {
+                    "Id": 39,
+                    "StudyActivityId": 0,
+                    "ActivityType": 5,
+                    "ActivityName": "Clinical Observation",
+                    "SortOrder": 3,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "",
+                    "LatestScoring": "0.1"
+                },
+                {
+                    "Id": 4,
+                    "StudyActivityId": 5,
+                    "ActivityType": 6,
+                    "ActivityName": "Injection",
+                    "SortOrder": 4,
+                    "NumericValues": "mL,kg",
+                    "Formula": "",
+                    "Dose": "10",
+                    "FormulationConcentration": "2.0 mg/mL",
+                    "Concentration": "20 mg/kg",
+                    "Substance": "Compound 1",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "1,150",
+                    "LatestScoring": ""
+                },
+                {
+                    "Id": 5,
+                    "StudyActivityId": 0,
+                    "ActivityType": 5,
+                    "ActivityName": "Injection Observation",
+                    "SortOrder": 5,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "",
+                    "LatestScoring": "0.1"
+                },
+                {
+                    "Id": 8,
+                    "StudyActivityId": 10,
+                    "ActivityType": 3,
+                    "ActivityName": "Measure Tumour",
+                    "SortOrder": 6,
+                    "NumericValues": "Width,Height,Length",
+                    "Formula": "4/3*([Width]/2)*([Height]/2)*([Length]/2)*[Pi]",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "2020-12-11",
+                    "LatestResult": "65",
+                    "LatestScoring": ""
+                },
+                {
+                    "Id": 46,
+                    "StudyActivityId": 0,
+                    "ActivityType": 8,
+                    "ActivityName": "Sacrifice",
+                    "SortOrder": 7,
+                    "NumericValues": "",
+                    "Formula": "",
+                    "Dose": "",
+                    "FormulationConcentration": "",
+                    "Concentration": "",
+                    "Substance": "",
+                    "LatestDate": "",
+                    "LatestResult": "",
+                    "LatestScoring": ""
+                }
+            ]
+        }
+    ]
+}
+
