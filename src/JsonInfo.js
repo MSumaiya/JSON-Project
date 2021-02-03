@@ -6,6 +6,28 @@ export default function JsonInfo(props) {
 
 
     const [isShown, setIsShown] = useState([]);
+    const [input1, setInput1]=useState('');
+    const [input2, setInput2]=useState('');
+    const [input3, setInput3]=useState('');
+    const [result, setResult]=useState(0)
+
+    function syncInputWithValue1(e){
+        setInput1(e.target.value);
+    }
+    function syncInputWithValue2(e){
+        setInput2(e.target.value);
+    }
+    function syncInputWithValue3(e){
+        setInput3(e.target.value);
+    }
+
+    function calculation(){
+        let Pi=3.14
+        setResult(4/3*parseInt(input1)/2*parseInt(input2)/2*parseInt(input3)/2*Pi);
+        setInput1('');
+        setInput2('');
+        setInput3('');
+    }
     
     function clickEvent(ani) {
       /* setIsShown(!isShown); */
@@ -108,14 +130,22 @@ export default function JsonInfo(props) {
                                     let numericValues1=(activity.NumericValues).split(',',1)
                                     let numericValues2=(activity.NumericValues).slice(6,12)
                                     let numericValues3=(activity.NumericValues).slice(13,19)
+                                
+                                
+                                    //let result = 4/3*(numericValues1/2)*(numericValues2/2)*(numericValues3/2)*[Pi]
                                     activityType=(
                                         <div >
                                         <h2>{activity.ActivityName}</h2>
-                                        <p>{numericValues1}</p> <input></input>
-                                        <p>{numericValues2}</p> <input></input>
-                                        <p>{numericValues3}</p><input></input>
-                                        <p>Result:</p>
-                                        
+                                        <form>
+                                        <label>{numericValues1}</label> 
+                                        <input onChange={syncInputWithValue1} value={input1}></input>
+                                        <label>{numericValues2}</label> 
+                                        <input onChange={syncInputWithValue2} value={input2}></input>
+                                        <label>{numericValues3}</label>
+                                        <input  onChange={syncInputWithValue3} value={input3}></input>
+                                        <button type="button" onClick={calculation}>calculate</button>
+                                        <p>Result:{result}</p>
+                                        </form>
                                         <button>Save</button><i>{activity.LatestDate}</i>
                                         </div>
                                     )
@@ -155,6 +185,7 @@ export default function JsonInfo(props) {
                 {testHtml}
             </React.Fragment>
             );
+
     }
 
     else{
