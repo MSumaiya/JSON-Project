@@ -177,15 +177,25 @@ export default function JsonInfo(props) {
                 );
             }
             });
-    
+            const obsHTML=Myjson.ObservationGroups.map((a)=>{
+                return(
+                    <div>
+                    <select>
+                        <option>
+                            {a.ObservationGroupName}
+                        </option>
+                    </select>
+                    </div>
+                    )
+            }) 
         
             return (
             <React.Fragment>
             
                 {testHtml}
+                {obsHTML}
             </React.Fragment>
-            );
-
+            );           
     }
 
     else{
