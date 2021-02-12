@@ -15,16 +15,13 @@ export default function JsonInfo(props) {
         Skin: [],
         "Flesh and Weight": [],
     });
-    const [scoring, setScoring]=useState(0);
-    
-    
+ 
         function handleSelect(e) {
         //let id=e.target.firstChild.dataset.id;
         let name = e.target.name;
         let newValue = value[name];
         newValue.push(e.target.value);
         setValue({ ...value, [name]: newValue });
-        setScoring(scoring+scoring)
     }
 
     function syncInputWithValue1(e){
@@ -238,9 +235,7 @@ export default function JsonInfo(props) {
             
                 {testHtml}
                 {obsHTML}
-                {ulList}
-               
-                
+                {ulList}                
             </React.Fragment>
             );           
     }
