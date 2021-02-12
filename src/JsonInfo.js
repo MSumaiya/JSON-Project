@@ -9,7 +9,18 @@ export default function JsonInfo(props) {
     const [input1, setInput1]=useState('');
     const [input2, setInput2]=useState('');
     const [input3, setInput3]=useState('');
-    const [result, setResult]=useState(0)
+    const [result, setResult]=useState(0);
+    const [value, setValue]=useState({Breath:[''], Skin:[''], FleshandWeight:['']});
+    
+    
+    function handleSelect(e){
+    //let id=e.target.firstChild.dataset.id;
+    let name = e.target.name;
+    let newValue = value[name].push(e.target.value);
+    console.log(name,e.target.value);
+    setValue({...value, [name]:newValue});
+
+    }
 
     function syncInputWithValue1(e){
         setInput1(e.target.value);
@@ -178,13 +189,33 @@ export default function JsonInfo(props) {
             }
             });
             const obsHTML=Myjson.ObservationGroups.map((a)=>{
+                //const daniel = <p>Observation Name:{a.observation.Name} Scoring:{a.observation.Scoring}</p>;
                 return(
-                    <div>
-                    <select>
-                        <option>
-                            {a.ObservationGroupName}
-                        </option>
+                    <div key={a.ObservationGroupId}> 
+                        {a.ObservationGroupName}:
+                    <form>
+                    <select onChange={handleSelect} name={a.ObservationGroupName.replace(' ','')}> 
+                        {a.Observations.map((observation)=>{
+                        
+                            return (                                 
+                                <option key={observation.Id} data-id={a.ObservationGroupId}>
+                                    Observation Name:{observation.Name} Scoring:{observation.Scoring} 
+                                </option>
+                            )
+                        })}
                     </select>
+                    </form>
+                    
+                    {/* {a.ObservationGroupId === value.id ? <ul><li>{value[a.ObservationGroupName.replace(' ','')]}</li></ul> : <React.Fragment/>}
+                    {a.ObservationGroupId === value.id ? <h4> Total Scoring:</h4> : <React.Fragment/>}    */}
+                        <ul>
+                            {
+                                value[a.ObservationGroupName.replace(' ','')]
+                            /*  value[a.ObservationGroupName.replace(' ','')].map((x)=>{
+                                    return(<li>{x}</li>)
+                                }) */
+                            }
+                        </ul>
                     </div>
                     )
             }) 
@@ -194,6 +225,7 @@ export default function JsonInfo(props) {
             
                 {testHtml}
                 {obsHTML}
+                {JSON.stringify(value)}
             </React.Fragment>
             );           
     }
