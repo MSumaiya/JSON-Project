@@ -10,16 +10,21 @@ export default function JsonInfo(props) {
     const [input2, setInput2]=useState('');
     const [input3, setInput3]=useState('');
     const [result, setResult]=useState(0);
-    const [value, setValue]=useState({Breath:[''], Skin:[''], FleshandWeight:['']});
+    const [value, setValue] = useState({
+        Breath: [],
+        Skin: [],
+        "Flesh and Weight": [],
+    });
+    const [scoring, setScoring]=useState(0);
     
     
-    function handleSelect(e){
-    //let id=e.target.firstChild.dataset.id;
-    let name = e.target.name;
-    let newValue = value[name].push(e.target.value);
-    console.log(name,e.target.value);
-    setValue({...value, [name]:newValue});
-
+        function handleSelect(e) {
+        //let id=e.target.firstChild.dataset.id;
+        let name = e.target.name;
+        let newValue = value[name];
+        newValue.push(e.target.value);
+        setValue({ ...value, [name]: newValue });
+        setScoring(scoring+scoring)
     }
 
     function syncInputWithValue1(e){
@@ -194,7 +199,7 @@ export default function JsonInfo(props) {
                     <div key={a.ObservationGroupId}> 
                         {a.ObservationGroupName}:
                     <form>
-                    <select onChange={handleSelect} name={a.ObservationGroupName.replace(' ','')}> 
+                    <select onChange={handleSelect} name={a.ObservationGroupName}> 
                         {a.Observations.map((observation)=>{
                         
                             return (                                 
@@ -208,24 +213,34 @@ export default function JsonInfo(props) {
                     
                     {/* {a.ObservationGroupId === value.id ? <ul><li>{value[a.ObservationGroupName.replace(' ','')]}</li></ul> : <React.Fragment/>}
                     {a.ObservationGroupId === value.id ? <h4> Total Scoring:</h4> : <React.Fragment/>}    */}
-                        <ul>
-                            {
-                                value[a.ObservationGroupName.replace(' ','')]
-                            /*  value[a.ObservationGroupName.replace(' ','')].map((x)=>{
-                                    return(<li>{x}</li>)
-                                }) */
-                            }
-                        </ul>
+                        {/* <ul>
+                            {value[a.ObservationGroupName] ? value[a.ObservationGroupName].map((x) => {
+                            return <li>{x}</li>;
+                            }) : <></>}
+                        </ul> */}
                     </div>
                     )
             }) 
+            let keys = Object.keys(value);
+ 
+            let ulList = (<ul>
+                {
+                    keys.map((key) => {
+                        return value[key].map((lis) => {
+                            return <li>{lis}</li>
+                        })
+                    })
+                }
+                </ul>);
         
             return (
             <React.Fragment>
             
                 {testHtml}
                 {obsHTML}
-                {JSON.stringify(value)}
+                {ulList}
+               
+                
             </React.Fragment>
             );           
     }
