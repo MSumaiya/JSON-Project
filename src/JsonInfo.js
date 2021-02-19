@@ -15,14 +15,37 @@ export default function JsonInfo(props) {
         Skin: [],
         "Flesh and Weight": [],
     });
- 
+    //const [scoring, setScoring]=useState(0);
+
+        /* function addScore(scr){
+            setScoring(scoring+scr);
+            console.log("scoring: ", scoring);
+        }
+ */
+
+    
+    
         function handleSelect(e) {
         //let id=e.target.firstChild.dataset.id;
         let name = e.target.name;
+        if(e.target.value==='0'){
+            return 
+        }
         let newValue = value[name];
+
+        if(newValue.includes(e.target.value)){
+            return 
+        }
         newValue.push(e.target.value);
-        setValue({ ...value, [name]: newValue });
+        setValue({ ...value, [name]: newValue});
+
     }
+ function deleteOption(name, option){
+    let newValue = value[name];
+    let index = newValue.indexOf(option);
+    newValue.splice(index, 1);
+    setValue({ ...value, [name]: newValue});
+ }
 
     function syncInputWithValue1(e){
         setInput1(e.target.value);
@@ -191,17 +214,21 @@ export default function JsonInfo(props) {
             }
             });
             const obsHTML=Myjson.ObservationGroups.map((a)=>{
-                //const daniel = <p>Observation Name:{a.observation.Name} Scoring:{a.observation.Scoring}</p>;
+            
                 return(
                     <div key={a.ObservationGroupId}> 
                         {a.ObservationGroupName}:
                     <form>
+
                     <select onChange={handleSelect} name={a.ObservationGroupName}> 
+                        <option value='0'></option>
                         {a.Observations.map((observation)=>{
-                        
+                            
+                            //console.log('totalScore', totalScore);
                             return (                                 
-                                <option key={observation.Id} data-id={a.ObservationGroupId}>
-                                    Observation Name:{observation.Name} Scoring:{observation.Scoring} 
+                                <option key={observation.Id} /* onChange={() => addScore(observation.Scoring)} */>
+                                    Observation Name: {observation.Name} ObservationId: {observation.Id} Scoring: {observation.Scoring} 
+
                                 </option>
                             )
                         })}
@@ -215,27 +242,53 @@ export default function JsonInfo(props) {
                             return <li>{x}</li>;
                             }) : <></>}
                         </ul> */}
+                        
                     </div>
+                    
                     )
             }) 
             let keys = Object.keys(value);
- 
+            let scoring = 0;
+            let obId1=[];
             let ulList = (<ul>
                 {
                     keys.map((key) => {
-                        return value[key].map((lis) => {
-                            return <li>{lis}</li>
+                        return value[key].map((lis,index) => {
+                            let x= lis.split('Scoring:')
+                            let y = parseFloat(x[1])
+                            scoring = scoring + y;
+
+                            let obId= lis.split(' ')
+                            obId1.push(obId[4]+',')
+                            return (
+                            <div>
+                            <li key={index}>{lis}</li>
+                                    <button onClick={()=>{deleteOption(key,lis)}}>delete</button>
+                        </div>
+                        )
                         })
                     })
                 }
                 </ul>);
-        
+function sendToAPI(){
+    alert(scoring +' ' + obId1);
+}
+                
+            /* let sum=0;
+            let addScoring= Myjson.ObservationGroups.Observations.map((observation)=>{
+                return sum+=parseFloat(observation.Scoring)
+            }) */
+            
             return (
-            <React.Fragment>
+                <React.Fragment>
             
                 {testHtml}
                 {obsHTML}
-                {ulList}                
+                {ulList}
+                {obId1}
+                {/* {addScoring} */}
+                <p>Total Scoring: {scoring}</p>
+                <button onClick={sendToAPI}>send</button>
             </React.Fragment>
             );           
     }
