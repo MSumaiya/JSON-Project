@@ -10,34 +10,18 @@ export default function JsonInfo(props) {
     const [input3, setInput3]=useState(''); */
 
     const [parameters, setParameters] = useState({
-        activitytype: undefined,
-        animalId: undefined,
-        shaving:undefined,
-    
-        studyactivityId: undefined,
-        activityId:undefined,
-        
-        result: undefined,
-        fieldvalues:undefined,
-        
+        animaltype: '',
+        animalId: '',
+        shaving:'',
+        studyId: '',
+        studyactivityId: '',
+        activityId:'',
+        comments: '',
+        result: '',
+        fieldvalues:'',
+        scoring: ''
     });
-
-    function sendToAPI(parameters){
-        let s = '';
-        for (const property in parameters) {
-            let value = parameters[property];
-            if (value !== undefined) 
-                s = s + property + ": " + value + " ";
-        }
-
-        alert(s);
-    }
-
-    useEffect(() => {
-        sendToAPI(parameters);
-    }, [parameters])
-
-    const [weightFieldValue, setWeightFieldValue]=useState(undefined);
+    //const [input4, setInput4]=useState(undefined)
    // const [result, setResult]=useState(undefined);
     const [value, setValue] = useState({
         Breath: [],
@@ -86,12 +70,11 @@ export default function JsonInfo(props) {
         inputFieldValues[field] = e.target.value;
     }
 
-    function syncWithWeightValue(e){
+    function syncWithValue4(e){
         //setInput4(e.target.value);
-        /* setParameters({...parameters, obj: {
+        setParameters({...parameters, obj: {
             fieldvalues: e.target.value
-        }}); */
-        setWeightFieldValue(e.target.value);
+        }});
     }
   
  /*    function calculation(){
@@ -150,18 +133,11 @@ export default function JsonInfo(props) {
                         <td>{animal.StudyGroupName} </td>
                         <td><button type="button" onClick={() => {
                             clickEvent(animal.Id)
-                            
                             //setAnimalId(animal.Id)
-                            /* setParameters({...parameters, obj: {
+                            setParameters({...parameters, obj: {
                                 animalId: animal.Id
-                            }}); */
-                            setParameters(parameters => ({
-                              ...parameters,
-                              animalId: animal.Id
-                            }));
-                            
-
-                            console.log(parameters.animalId)
+                            }});
+                            console.log(animal.Id)
                         }}>
                             Show Details
                             </button></td>
@@ -178,30 +154,15 @@ export default function JsonInfo(props) {
                                     <div key={activity.id}>
                                     <h2>{activity.ActivityName}</h2>
                                     <button onClick={() => {
-                                        console.log("clicked shaving");
-                                  /*   setParameters({...parameters, obj: {
-                                        activitytype: activity.ActivityType
-                                    }}); */
-                                  
-                                    setParameters(parameters => ({
-                                      ...parameters,
-                                      activitytype: activity.ActivityType,
-                                      studyactivityId: activity.StudyActivityId,
-                                      activityId: activity.Id,
-                                      fieldvalues: undefined,
-                                      shaving: activity.LatestResult,
-                                      result: undefined,
-                                      animalId: animal.Id
-                                    }));
-                                    
-                                    
                                        // setShaving(activity.LatestResult)
-                                       /*  setParameters({...parameters, obj: {
+                                        setParameters({...parameters, obj: {
                                                 shaving: activity.LatestResult
-                                            }}); */
-                                            console.log(parameters.shaving);
+                                            }});
                                         }}>done</button>
-                                        
+                                        <button onClick={() => {
+                                        /* activityId, animalId, shaving, input4, result, scoring, obId1 */
+                                        sendToAPI(parameters)
+                                        }}>send</button>
                                     <p><i>{activity.LatestDate}</i></p>
                                     </div>
                                                             );
@@ -210,23 +171,15 @@ export default function JsonInfo(props) {
                                                             activityType=(
                                                                 <div key={activity.id}>
                                     <h2>{activity.ActivityName}</h2>
-                                    <input onChange={syncWithWeightValue} value={parameters.fieldvalues}></input>
+                                    <input onChange={syncWithValue4} value={parameters.fieldvalues}></input>
                                     <button onClick={
                                         () => {
                                             //setActivityId(activity.Id);
-                                            /* setParameters({...parameters, obj: {
+                                            setParameters({...parameters, obj: {
                                                 activityId: activity.Id
-                                            }}); */
-                                            setParameters(parameters => ({
-                                                ...parameters,
-                                                activitytype: activity.ActivityType,
-                                                studyactivityId: activity.StudyActivityId,
-                                                activityId: activity.Id,
-                                                shaving: undefined,
-                                                fieldvalues: weightFieldValue
-                                            
-                                            }));
+                                            }});
                                             //sendToAPI(activitytype, studyid,animalId, studyactivityid, activityid, comments, result, fieldvalues, scoring)
+                                            sendToAPI(parameters);
                                             //console.log(activityId);
                                         }
                                         
@@ -291,22 +244,9 @@ export default function JsonInfo(props) {
 
                                             let result = Math.round((eval(formula) + Number.EPSILON) * 100) / 100;
                                             //setResult(result);
-                                            /* setParameters({...parameters, obj: {
+                                            setParameters({...parameters, obj: {
                                                 result: result
-                                            }}); */
-                                        /*  setParameters(parameters => ({
-                                            ...parameters,
-                                            result: result
-                                            })); */
-                                            setParameters(parameters => ({
-                                                ...parameters,
-                                                activitytype: activity.ActivityType,
-                                                studyactivityId: activity.StudyActivityId,
-                                                activityId: activity.Id,
-                                                shaving: undefined,
-                                                fieldvalues: undefined,
-                                                result:result
-                                            }));
+                                            }});
                                         }}>calculate</button>
                                         <p>Result:{parameters.result}</p>
                                         </form>
@@ -358,7 +298,7 @@ export default function JsonInfo(props) {
                             return (                                 
                                 <option key={observation.Id} /* onChange={() => addScore(observation.Scoring)} */>
                                     Observation Name: {observation.Name} ObservationId: {observation.Id} Scoring: {observation.Scoring} 
-                                
+
                                 </option>
                             )
                         })}
@@ -377,11 +317,9 @@ export default function JsonInfo(props) {
                     
                     )
                 }) 
-                
                 let keys = Object.keys(value);
                 let scoring = 0;
                 let obId1=[];
-            
                 let ulList = (<ul>
                     {
                         keys.map((key) => {
@@ -389,12 +327,9 @@ export default function JsonInfo(props) {
                                 let x= lis.split('Scoring:')
                                 let y = parseFloat(x[1])
                                 scoring = scoring + y;
-                            /*     setParameters(parameters => ({
-                                ...parameters,
-                                scoring: scoring
-                                })); */
+    
                                 let obId= lis.split(' ')
-                                obId1.push(obId[4]+' ')
+                                obId1.push(obId[4]+',')
 
                                 console.log(obId1)
                                 return (
@@ -418,15 +353,25 @@ export default function JsonInfo(props) {
     /* function sendToAPI(shaving){
         alert(shaving);
     } */
+    function sendToAPI(parameters){
+        /*if (parameters.activitytype === undefined || parameters.studyid === undefined || parameters.animalId === undefined) {
+            return;
+        }*/
+        for (const property in parameters) {
+            if (parameters[property] === undefined) return;
+        }
+
+        alert(parameters.property);
+    }
 /* function sendToAPI(activitytype,studyid,animalid, studyactivityid, activityid, comments, result, fieldvalues, scoring){
     alert(activitytype+''+ studyid +''+ animalid +''+ studyactivityid +''+ activityid +''+ comments+'' +result+''+ fieldvalues +''+scoring);
 } */
 /* function sendResult(){
     alert(result);
 } */
-function sendToFunction(scoring, obId1){
-    alert( 'Scoring:'+ scoring +' '+'ObservationId:'+ obId1)
-}
+/* function sendTofunction(){
+    alert( input4)
+} */
 /* let sum=0;
 let addScoring= Myjson.ObservationGroups.Observations.map((observation)=>{
     return sum+=parseFloat(observation.Scoring)
@@ -443,7 +388,7 @@ let addScoring= Myjson.ObservationGroups.Observations.map((observation)=>{
             
                 {/* {addScoring} */}
                 <p>Total Scoring: {scoring}</p>
-                <button onClick={()=>{sendToFunction(scoring, obId1)}}>send</button>            
+                <button onClick={()=>{sendToAPI(parameters)}}>send</button>            
             </React.Fragment>
             );           
     }
